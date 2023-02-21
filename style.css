@@ -1,0 +1,16 @@
+
+#middleSection {
+    position: absolute;
+    top: 15%;
+}
+
+
+#footerSection {
+    position: absolute;
+    top: 90%;
+}
+
+/* #inventoryDataLayout{
+    position: absolute;
+    top: 40%;
+} */

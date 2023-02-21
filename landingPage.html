@@ -1,0 +1,509 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        crossorigin="anonymous"></script>
+
+    <title>Landing Page</title>
+</head>
+
+<script>
+    var data;
+
+    // Function for getting data via json
+    // function getData() {
+    //     /// Function fetches the data from php
+    //     var xhttp = new XMLHttpRequest();
+    //     xhttp.onreadystatechange = function () {
+    //         if(this.readyState == 4 && this.status == 200){
+    //             data = JSON.parse(xhttp.responseText);
+    //             //console.log(data[0]);
+    //         }
+    //     }
+    //     xhttp.open("GET", "data.php", true);
+    //     xhttp.send();
+    // }
+
+    // function updateInventory(option) {
+    //     // alert("Testing..... " + option + " is selected by user.");
+    //     document.getElementById("imageField").src = data[option]["imageSrc"];
+    //     document.getElementById("itemName").value = data[option]["Item Name"];
+    //     document.getElementById("itemNo").value = data[option]["Item No"];
+    //     document.getElementById("price").value = data[option]["Price"];
+    //     document.getElementById("madeIn").value = data[option]["Made In"];
+    //     document.getElementById("warranty").value = data[option]["Warranty"];
+    //     document.getElementById("quanity").value = data[option]["Quantity"];
+    //     document.getElementById("rating").value = data[option]["Rating"];
+    //     document.getElementById("inStock").value = data[option]["In Stock"];
+    // }
+
+    function getDataViaPHP() {
+        /// Function fetches the data from php
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if(this.readyState == 4 && this.status == 200){
+                //fetch data from the server
+                data = JSON.parse(xhttp.responseText);
+                // console.log(data);
+            }
+        }
+        xhttp.open("GET", "dataServer.php", true);
+        xhttp.send();
+    }
+
+    function updateInventoryViaPHP(option) {
+        document.getElementById("imageField").src = data[option]["imageSrc"];
+        document.getElementById("itemName").value = data[option]["itemName"];
+        document.getElementById("itemNo").value = data[option]["itemNo"];
+        document.getElementById("price").value = data[option]["price"];
+        document.getElementById("madeIn").value = data[option]["madeIn"];
+        document.getElementById("warranty").value = data[option]["warranty"];
+        document.getElementById("quantity").value = data[option]["quantity"];
+        document.getElementById("rating").value = data[option]["rating"];
+        document.getElementById("inStock").value = data[option]["inStock"];
+    }
+
+</script>
+
+<body onload="getDataViaPHP()">
+    <br>
+
+    <!-- Navbar part Starts -->
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-1"><hr></div>
+            <div class="col-1">
+                <nav class="navbar navbar-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Amazon_icon.svg/2500px-Amazon_icon.svg.png"
+                                class="me-2" height="30" alt="Logo Missing" loading="lazy" />
+                            <strong>Amazon</strong>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-7">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <marquee scrollamount="10">
+                        1. "Spread love everywhere you go. Let no one ever come to you without leaving happier." <strong>-Mother Teresa</strong>
+                      
+                        2. "When you reach the end of your rope, tie a knot in it and hang on." <strong>-Franklin D. Roosevelt</strong>
+
+                        3. "Always remember that you are absolutely unique. Just like everyone else." <strong>-Margaret Mead</strong>
+
+                        4. "Don't judge each day by the harvest you reap but by the seeds that you plant." <strong>-Robert Louis Stevenson</strong>
+
+                        5. "The future belongs to those who believe in the beauty of their dreams." <strong>-Eleanor Roosevelt</strong>
+                    </marquee>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="col-2">
+                <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid">
+                      <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                      </form>
+                    </div>
+                  </nav>
+            </div>
+            <div class="col-1"><hr></div>
+        </div>
+    </div>
+    <!-- Navbar part ends -->
+
+    <br><br>
+
+    <!-- Column Part Starts -->
+    <div class="jumbotron  text-center" id="middleSection">
+        <div class="row">
+            <div class="col-1"></div>
+            <!-- Accordion Part Starts-->
+            <div class="col-3">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item  bg-warning">
+                        <h2 class="accordion-header " id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <div class="">Login To Prime</div>
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <!-- First item of Accordion starts here -->
+                                <form>
+                                    <!-- Email input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="email" id="form1Example1" class="form-control"
+                                            placeholder="Email address" />
+                                        <!-- <label class="form-label" for="form1Example1">Email address</label> -->
+                                    </div>
+
+                                    <!-- Password input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="form1Example2" class="form-control"
+                                            placeholder="Password" />
+                                        <!-- <label class="form-label" for="form1Example2">Password</label> -->
+                                    </div>
+
+                                    <!-- 2 column grid layout for inline styling -->
+                                    <div class="row mb-4">
+                                        <div class="col d-flex justify-content-center">
+                                            <!-- Checkbox -->
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="form1Example3" checked />
+                                                <label class="form-check-label" for="form1Example3"> Remember me
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <!-- Simple link -->
+                                            <a href="#!">Forgot password?</a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Submit button -->
+                                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                </form>
+                                <!-- First item of Accordion ends here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-warning">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Amazon Prime Video
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body ">
+                                <!-- Second item of Accordion starts here -->
+                                <div class="note note-light mb-3">
+                                    Find Movies & Shows From Your Favorite Channels All In One Place. Join Online
+                                    Now! Enjoy Exclusive TV Shows, Blockbuster Bollywood & Regional Movies At
+                                    <strong>Prime Video</strong>.
+                                </div>
+
+                                <form class="row row-cols-lg-auto g-3 align-items-center" action="AmazonMovies.html">
+                                    <div class="col-8">
+                                        <label class="visually-hidden"
+                                            for="inlineFormInputGroupUsername">Username</label>
+                                        <div class="input-group">
+                                            <div class="input-group-text">+91</div>
+                                            <input type="text" class="form-control" id="inlineFormInputGroupUsername"
+                                                placeholder="Mobile Number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                            <button type="submit" class="btn btn-primary" >Watch Now</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- Second item of Accordion ends here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item bg-warning">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Amazon Music: Dicover Songs
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <!-- Third item of Accordion starts here -->
+                                <div class="note note-light mb-3">
+                                    <strong>Amazon Music Prime</strong> provides unlimited, ad-free access to
+                                    on-demand streaming of curated playlists and Stations, plus millions of songs
+                                    and albums at no additional cost for eligible Amazon Prime members.
+                                </div>
+
+                                <form class="row row-cols-lg-auto g-3 align-items-center" action="AmazonMusic.html">
+                                    <div class="col-8">
+                                        <label class="visually-hidden"
+                                            for="inlineFormInputGroupUsername">Username</label>
+                                        <div class="input-group">
+                                            <div class="input-group-text">+91</div>
+                                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" 
+                                                placeholder="Mobile Number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                            <button type="submit" class="btn btn-primary" >Listen Now</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- Third item of Accordion ends here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Accodion Part Ends -->
+            </div>
+            <!-- Latest News section starts here -->
+            <div class="col-3">
+                <div id="carouselExampleCaptions" class="carousel slide">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://www.deccanherald.com/sites/dh/files/styles/article_detail/public/articleimages/2023/02/14/amazon-reuters-1190998-1676339950.jpg?itok=zv7UOSKZ"
+                                class="d-block w-100" alt="Image Not Found">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Amazon CEO doubles down on grocery store business</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="data:image/jpeg;base64,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"
+                                class="d-block w-100" alt="Image Not Found">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Layoffs at Amazon</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://e3.365dm.com/22/10/1600x900/skynews-elon-musk-twitter_5945878.jpg?20221028023020"
+                                class="d-block w-100" alt="Image Not Founds">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Twitter 'set to make millions' as Apple and Amazon ads appear next to
+                                    once-banned users</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <!-- Latest News section ends here -->
+
+                <br>
+
+                <!-- Card starts here -->
+                <div class="card">
+                    <img src="https://www.theladders.com/wp-content/uploads/jeff-bezos-ceo-profile-1490x838.jpg"
+                    class="card-img-top" alt="Image of Jeff Bezos.">
+                    <div class="card-body">
+                      <h5 class="card-title">Why Us?</h5>
+                      <p class="card-text">“We see our customers as invited guests to a party, and we are the hosts. 
+                        It’s our everyday job to make every important aspect of the customer experience a little bit better.”
+                        <br>
+                        <strong> – Jeff Bezos</strong></p>
+                      <a href="https://www.google.com/search?q=why+amazon+is+successful&rlz=1C1CHBF_enIN845IN845&ei=hxPuY4m2NvCNseMPgum7sAI&ved=0ahUKEwjJlZGM-Jn9AhXwRmwGHYL0DiYQ4dUDCA8&uact=5&oq=why+amazon+is+better&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQARgASgQIQRgAUABYAGAAaABwAHgAgAEAiAEAkgEAmAEA&sclient=gws-wiz-serp"
+                       class="btn btn-primary">&#8592; Know More &#8594;</a>
+                    </div>
+                  </div>
+                <!-- Card ends here -->
+            </div>
+
+            <!-- Amazon Inventory Starts -->
+
+            <!-- <div class="col-4">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" onclick="updateInventory(0)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio1">Item 1</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio2" onclick="updateInventory(1)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio2">Item 2</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio3" onclick="updateInventory(2)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio3">Item 3</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio4" onclick="updateInventory(3)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio4">Item 4</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio5" onclick="updateInventory(4)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio5">Item 5</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio6" onclick="updateInventory(5)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio6">Item 6</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio7" onclick="updateInventory(6)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio7">Item 7</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio8" onclick="updateInventory(7)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio8">Item 8</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio9" onclick="updateInventory(8)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio9">Item 9</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio10" onclick="updateInventory(9)"
+                                autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio10">Item 10</label>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-6">
+                        <div class="row">
+                            <img src="https://www.elegantthemes.com/blog/wp-content/uploads/2019/10/loading-screen-featured-image.jpg" height="100" class="img-thumbnail" alt="Image Not Found." id="imageField">
+                        </div>
+                        <br>
+                        <div class="row" id="inventoryDataLayout">
+                            <label for="itemName" class="col-sm-5 col-form-label">Item Name :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="itemName" value="">
+                            </div>
+                            <label for="itemNo" class="col-sm-5 col-form-label">Item No :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="itemNo" value="">
+                            </div>
+                            <label for="price" class="col-sm-5 col-form-label">Price :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="price" value="">
+                            </div>
+                            <label for="madeIn" class="col-sm-5 col-form-label">Made In :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="madeIn" value="">
+                            </div>
+                            <label for="warranty" class="col-sm-5 col-form-label">Warranty :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="warranty" value="">
+                            </div>
+                            <label for="quantity" class="col-sm-5 col-form-label">Quantity :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="quanity" value="">
+                            </div>
+                            <label for="rating" class="col-sm-5 col-form-label">Rating :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="rating" value="">
+                            </div><label for="inStock" class="col-sm-5 col-form-label">In Stock :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="inStock" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" onclick="updateInventoryViaPHP(0)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio1">Item 1</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio2" onclick="updateInventoryViaPHP(1)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio2">Item 2</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio3" onclick="updateInventoryViaPHP(2)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio3">Item 3</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio4" onclick="updateInventoryViaPHP(3)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio4">Item 4</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio5" onclick="updateInventoryViaPHP(4)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio5">Item 5</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio6" onclick="updateInventoryViaPHP(5)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio6">Item 6</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio7" onclick="updateInventoryViaPHP(6)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio7">Item 7</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio8" onclick="updateInventoryViaPHP(7)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio8">Item 8</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio9" onclick="updateInventoryViaPHP(8)" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio9">Item 9</label>
+                            <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio10" onclick="updateInventoryViaPHP(9)"
+                                autocomplete="off">
+                            <label class="btn btn-outline-danger" for="vbtn-radio10">Item 10</label>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-6">
+                        <div class="row">
+                            <img src="https://www.elegantthemes.com/blog/wp-content/uploads/2019/10/loading-screen-featured-image.jpg" height="100" class="img-thumbnail" alt="Image Not Found." id="imageField">
+                        </div>
+                        <br>
+                        <div class="row" id="inventoryDataLayout">
+                            <label for="itemName" class="col-sm-5 col-form-label">Item Name :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="itemName" value="">
+                            </div>
+                            <label for="itemNo" class="col-sm-5 col-form-label">Item No :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="itemNo" value="">
+                            </div>
+                            <label for="price" class="col-sm-5 col-form-label">Price :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="price" value="">
+                            </div>
+                            <label for="madeIn" class="col-sm-5 col-form-label">Made In :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="madeIn" value="">
+                            </div>
+                            <label for="warranty" class="col-sm-5 col-form-label">Warranty :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="warranty" value="">
+                            </div>
+                            <label for="quantity" class="col-sm-5 col-form-label">Quantity :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="quantity" value="">
+                            </div>
+                            <label for="rating" class="col-sm-5 col-form-label">Rating :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="rating" value="">
+                            </div><label for="inStock" class="col-sm-5 col-form-label">In Stock :</label>
+                            <div class="col-sm-6">
+                                <input type="text" readonly class="form-control-plaintext" id="inStock" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Amazon Inventory Ends -->
+            <div class="col-1"></div>
+        </div>
+    </div>
+    <!-- Column Part Ends -->
+
+    <br>
+    <br>
+
+    <!-- Footer part Starts -->
+    <div class="jumbotron text-center" id="footerSection">
+        <div class="row">
+            <div class="col-2">
+                <hr>
+            </div>
+            <div class="col-2">
+                <img src="https://pngimg.com/d/amazon_PNG9.png" class="img-fluid" alt="Image Not Found.">
+            </div>
+            <div class="col-3">
+            </div>
+            <div class="col-3">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="inputPassword6" class="col-form-label">Contact Us</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" id="inputPassword6" class="form-control"
+                            aria-describedby="passwordHelpInline">
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-outline-warning">&#8594;</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <hr>
+            </div>
+        </div>
+    </div>
+    <!-- Footer part E0nds -->
+
+</body>
+
+</html>
